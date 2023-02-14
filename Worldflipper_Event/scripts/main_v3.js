@@ -85,14 +85,6 @@ window.onload = function() {
     generateAndAppendImageContainer("https://i.imgur.com/0PIluTR.jpg", "風翔太池", "2023/1/31");
     generateAndAppendImageContainer("https://i.imgur.com/2DyxkFC.jpg", "新年池", "2023/1/31");
     generateAndAppendImageContainer("https://i.imgur.com/8IZvQr5.jpg", "耶誕池", "2023/1/31");
-
-    // 新增內文
-    for (var i = 0; i < 100; i++) {
-        var modalContentId = "modal-content-" + i;
-        var contentId = "content-" + i;
-        document.getElementById(modalContentId).innerHTML += document.getElementById(contentId).innerHTML;
-      }
-      
     
     function applyTextShadow(img, titleLeft, titleRight) {
         const colorThief = new ColorThief();
@@ -110,5 +102,13 @@ window.onload = function() {
             applyTextShadow(img, titleLeft, titleRight);
         });
     });
+    
+    // 新增內文
+    for (var i = 0; i < 100; i++) {
+        var modalContentId = "modal-content-" + i;
+        var contentId = "content-" + i;
+        document.getElementById(modalContentId).innerHTML += document.getElementById(contentId).innerHTML;
+      }
+      
 }
 
