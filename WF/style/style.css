@@ -1,0 +1,122 @@
+.center-block {
+  width: 500px;
+  height: 500px;
+  background-color: rgb(99, 99, 99);
+  margin: 200 auto;
+  text-align: center;
+  border: 10px solid;
+  position: relative;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 5px solid black;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid black;
+}
+
+.modal-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-section {
+  width: 30%;
+  text-align: center;
+}
+
+.left-section img {
+  width:30%;
+}
+
+.right-section {
+  width: 70%;
+  padding: 20px;
+  text-align: left;
+}
+
+#info-button {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 45%;
+}
+
+.image-container:hover {
+  transform: scale(1.05);
+  transition: transform 0.25s ease-in-out;
+}
+
+.your-image {
+  margin: 25px;
+  box-shadow: 0px 0px 5px #000000;
+  border-radius: 15px;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-title {
+  transform: scale(0.861);
+  position: absolute;
+  bottom: 109;
+  left: -12;
+  width: 100%;
+  height: 140px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.397), rgba(0, 0, 0, 0));
+  color: white;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 17px 15px 0 0;
+}
+
+
+.title-left{
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  color:#ffffff;
+  filter: brightness(100%) saturate(700%);
+  margin: 0 0 0 0;
+}
+
+.title-right{
+  position: absolute;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color:#ffffff;
+  filter: brightness(150%) saturate(500%);
+  left: 13;
+  bottom: 75;
+  margin: 0 0 8 0;
+}
+
