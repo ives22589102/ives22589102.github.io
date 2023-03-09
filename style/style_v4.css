@@ -1,0 +1,460 @@
+.center-block {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border: 0px solid;
+  position: relative;
+  padding-top : 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: transform 0.25s ease-in-out;
+}
+
+
+.your-image {
+  width: 90%;
+  margin: 25px;
+  box-shadow: 0px 0px 5px #000000;
+  border-radius: 15px;
+  cursor: url(https://i.imgur.com/1S7u5Z5.png), auto;
+}
+
+.your-image:hover {
+  animation: shadow-pulse 1s infinite;
+}
+
+@keyframes shadow-pulse {
+  0% {
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+  }
+  50% {
+    box-shadow: 0 0 30px rgb(255, 255, 255);
+  }
+  100% {
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+  }
+}
+
+.eventblock {
+  position: relative;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  background-color: rgba(255, 255, 255, 0.4);
+  left: 20px;
+  margin-bottom: 25px;
+}
+
+
+.event {
+  position: relative;
+  display: inline-block;
+  width: 28%; /* 如果希望每個事件的寬度均等，可以將寬度設置為50% */
+  height: 100%;
+  margin: 1.4%;
+  bottom: px;
+  left: 10px;
+  cursor: url(https://i.imgur.com/1S7u5Z5.png), auto;
+}
+
+
+
+.event img {
+  max-width: 100%; /* 設置最大寬度為100% */
+  height: auto; /* 設置高度為auto，使圖像保持原始比例 */
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  margin: 7px;
+  box-shadow: 0px 0px 10px #000000;
+}
+  
+  .event img:hover {
+    box-shadow: 0 0 12px rgb(255, 255, 255);
+    }
+
+
+.event:hover {
+  transform: scale(1.1);
+}
+
+.image-container {
+  position: relative;
+  width: 25%
+}
+
+
+.card-title {
+  position: absolute;
+  top: 24px;
+  left: 25px;
+  width: 90%;
+  height: 30%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 17px 15px 0 0;
+  pointer-events: none;
+}
+
+.blank-container {
+  transform: scale(0.86);
+  position: absolute;
+  top: 9px;
+  left: -10px;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.267), rgba(0, 0, 0, 0));
+  color: white;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 17px 15px 0 0;
+}
+
+
+.title-left{
+  position: absolute;
+  top: -50px;
+  font-family:'Noto Sans TC', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  color:#ffffff;
+  filter: brightness(100%) saturate(500%);
+  margin: 0px 0px 0px 12px;
+  border-radius: 17px 15px 0 0;
+}
+
+.title-right{
+  position: absolute;
+  top: -37px;
+  right: 10px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color:#ffffff;
+  filter: brightness(100%) saturate(500%);
+
+  margin: 0 0 8 0;
+  border-radius: 17px 15px 0 0;
+}
+
+.modal, .event_modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content, .event_modal_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  padding: 20px;
+  width: 60%;
+  height: 80%;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+
+.content{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.eventcontent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  
+}
+
+.content img, .eventcontent img {
+  position: relative;
+  margin-top: 27px;
+  object-fit:contain;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  position: fixed;
+  left: 47%;
+  bottom: 20px;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor
+}
+
+table {
+  border-collapse: collapse;
+  
+}
+td {
+  border: 1px solid rgba(255, 255, 255, 0);
+  padding: 10px;
+  text-align: left;
+}
+
+.Note {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  color: white;
+  width: 10%;
+  height: 100%;
+  margin: 1% auto;
+  text-shadow: 4px 3px 5px rgba(0, 0, 0, 0.8);
+
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://i.imgur.com/SCxq4B5.png");
+  background-size: cover;
+  background-repeat: repeat-y;
+  opacity: 1;
+  z-index: -2;
+  cursor: 
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: url(https://i.imgur.com/YrKeXzS.png), auto;
+  animation: cursor-body 0.2s linear infinite;
+}
+@keyframes cursor-body{
+  0% { 
+      cursor: url(https://i.imgur.com/YrKeXzS.png), auto;
+  }
+  50% { 
+      cursor: url(https://i.imgur.com/tJwcYpY.png), auto;
+  }
+  100% { 
+      cursor: url(https://i.imgur.com/9KUXuvQ.png), auto;
+  }
+}
+
+
+
+/*搜尋功能*/
+.sticky-buttons {
+  position: fixed;
+  width: 20%;
+  height: 5%;
+  margin: 20px;
+  top: 0;
+  left: 1;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  z-index: 2;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  width: 100%;
+  left: 6%;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+.dropbtn:hover,.dropdown-content button:hover {
+  background-color: rgba(102, 102, 102, 0.438);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #f9f9f9;
+  min-width: 93%;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin-top: px;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.dropdown-content.show {
+  width: 90%;
+  display: block;
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+
+.dropdown-content input[type="text"],
+.dropdown-content button {
+  display: block;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: none;
+  background-color: #eee;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dropdown-content button {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+
+
+/*RWD*/
+@media (max-width: 1100px) {
+  
+  .image-container {
+  width: 100%;
+  }
+  
+  .modal-content{
+    position: relative;
+    width: 70%;
+    height: 60%;
+    top: 50%;
+  }
+
+  .card-title {
+  width: 93%;
+  position: relative;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0));
+  }
+  
+  .title-left {
+  position: relative;
+  font-size: 60px;
+  top: -20px;
+  }
+  
+  .title-right {
+    position: relative;
+  font-size: 50px;
+    top:-5px ;
+  }
+    .event {
+      left: 3%;
+    }
+  
+  .eventblock {
+    left:5%;
+  }
+  
+  .event_modal_content{
+    width: 70%;
+    height: 50%;
+  }
+
+  .sticky-buttons {
+    height: 2%;
+  }
+
+
+/*RWD*/
+@media (max-width: 600px) {
+  .center-block {
+  margin-top: 0px;
+  }
+  
+  .image-container {
+  width: 100%;
+  }
+  
+  .modal-content{
+    position: relative;
+    width: 80%;
+    height: 40%;
+    top: 50%;
+  }
+  
+  .event {
+    left: 5%;
+  }
+  
+  .title-left {
+  font-size: 25px;
+  }
+  
+  .title-right {
+  font-size: 2.px;
+  top: -35px;
+  right: 10px;
+  }
+
+  body::after {
+    background-size: contain;
+  }
+  
+}
