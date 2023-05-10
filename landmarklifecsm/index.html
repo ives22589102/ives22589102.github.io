@@ -1,0 +1,136 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>CodePen - Sidebar by Andrew M.</title>
+  <link rel="stylesheet" href="./勿更動資料/css/style.css">
+
+</head>
+
+<body>
+<!-- partial:index.partial.html -->
+
+  
+    <meta charset="utf-8">
+    <title>Sidebar</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet" type="text/css">
+  
+  
+    <ul class="sidebar">
+      <li class="sidebar-brand"><a>系統說明</a></li>
+      <li><a href="#login">登入畫面</a></li>
+      <li><a href="#account">帳戶設定</a></li>
+      <li><a href="#system">系統設定</a></li>
+      <li><a href="#picture">圖片系統</a></li>
+      <li><a href="#data">資料管理系統</a></li>
+      <li class="sidebar-brand"><a>頁面說明</a></li>
+      <li><a href="#home">首頁輪播</a></li>
+      <li><a href="#news">最新消息</a></li>
+      <li><a href="#theme">主題館</a></li>
+      <li><a href="#floor">樓層導覽</a></li>
+      <li><a href="#question">常見問題</a></li>
+      <li><a href="#equip">服務設施</a></li>
+      <li><a href="#lost">失物招領</a></li>
+      <li><a href="#member">會員專區</a></li>
+      <li><a href="#edm">線上型錄</a></li>
+      <li><a href="#event">場地租借</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+      <br>
+       
+      <br><a style="
+    left: 20px;
+    position: relative;
+">備註：<br>後台之更新會<br>即時同步到前台。</a>
+      </ul>
+
+      
+
+      <div class="subpage" id="login">
+        <iframe src="./勿更動資料/subpage/登入畫面.htm"></iframe>
+      </div>
+
+      <div class="subpage" id="account">
+        <iframe src="./勿更動資料/subpage/帳戶設定.htm"></iframe>
+      </div>
+
+      <div class="subpage" id="system">
+        <iframe src="./勿更動資料/subpage/系統設定.htm"></iframe>
+      </div>
+      
+      <div class="subpage" id="picture">
+        <iframe src="./勿更動資料/subpage/圖片系統.htm"></iframe>
+      </div>
+      
+      <div class="subpage" id="data">
+        <iframe src="./勿更動資料/subpage/資料管理系統.htm"></iframe>
+      </div>
+      
+      <div class="subpage" id="home">
+        <iframe src="./勿更動資料/subpage/首頁輪播.htm"></iframe>
+      </div>
+      
+      <div class="subpage" id="news">
+        <iframe src="./勿更動資料/subpage/最新消息.htm"></iframe>
+      </div>
+      
+      <div class="subpage" id="theme">
+        <iframe src="./勿更動資料/subpage/主題館.htm"></iframe>
+      </div>
+      
+      <div class="subpage" id="floor">
+        <iframe src="./勿更動資料/subpage/樓層導覽.htm"></iframe>
+      </div>
+      
+      <div class="subpage" id="question">
+        <iframe src="./勿更動資料/subpage/常見問題.htm"></iframe>
+      </div>
+      
+      <div class="subpage" id="equip">
+        <iframe src="./勿更動資料/subpage/服務設施.htm"></iframe>
+      </div>
+      
+      <div class="subpage" id="lost">
+        <iframe src="./勿更動資料/subpage/失物招領.htm"></iframe>
+      </div>
+      
+      <div class="subpage" id="member">
+        <iframe src="./勿更動資料/subpage/會員專區.htm"></iframe>
+      </div>
+      
+      <div class="subpage" id="edm">
+        <iframe src="./勿更動資料/subpage/線上型錄.htm"></iframe>
+      </div>
+
+      <div class="subpage" id="event">
+        <iframe src="./勿更動資料/subpage/場地租借.htm"></iframe>
+      </div>
+
+      <div class="subpage" id="contact">
+        <iframe src="./勿更動資料/subpage/聯絡我們.htm"></iframe>
+      </div>
+      
+
+
+
+<style>
+  iframe {
+    width: 90%;
+    left: 10%;
+    position: relative;
+    height: 100vh;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var iframes = document.getElementsByTagName('iframe');
+    for (var i = 0; i < iframes.length; i++) {
+      iframes[i].addEventListener('load', function() {
+        var iframeDoc = iframes[i].contentWindow.document;
+        var links = iframeDoc.getElementsByTagName('a');
+        for (var j = 0; j < links.length; j++) {
+          links[j].removeAttribute('href');
+        }
+      });
+    }
+  });
+  
+  </script></body></html>
