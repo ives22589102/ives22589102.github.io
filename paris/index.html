@@ -936,8 +936,8 @@ function refreshPick(p){
 
 // ================= 地圖 =================
 const map=L.map("map",{zoomControl:false,attributionControl:true,zoomSnap:.25,zoomDelta:.5,wheelPxPerZoomLevel:90}).setView([48.866,2.31],12);
-L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",{
-  maxZoom:19,subdomains:"abcd",attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/attributions">CARTO</a>'}).addTo(map);
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{
+  maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
 const markers={};
 const mkIcon=(inner,label,cls,color)=>L.divIcon({className:"",iconSize:[0,0],
   html:`<div class="mk ${cls||""}"><div class="dot" style="background:${color||"#1f2a44"}"><b>${inner}</b></div><div class="lbl">${esc(label)}</div></div>`});
@@ -952,10 +952,24 @@ map.on("zoomend",syncLabels);
 const cityB=L.latLngBounds(PLACES.filter(p=>km([48.8566,2.3522],p.ll)<7).map(p=>p.ll));
 const allB=L.latLngBounds([HOTEL,CDG,...PLACES.map(p=>p.ll)]);
 const pad=()=>({paddingTopLeft:[14,112],paddingBottomRight:[14,92]});
-map.fitBounds(cityB,pad()); syncLabels();
+// 地圖尺寸還沒算好時（例如從其他 App 開啟）先不要縮放，等尺寸正確再做
+function sizeOK(){const s=map.getSize();return s.x>120&&s.y>260;}
+let didFit=false;
+function initialFit(){
+  if(didFit) return; map.invalidateSize();
+  if(!sizeOK()) return;
+  try{map.fitBounds(cityB,pad());didFit=true;}catch(e){}
+  syncLabels();
+}
+initialFit();
+["load","resize","orientationchange","pageshow"].forEach(ev=>window.addEventListener(ev,()=>{map.invalidateSize();initialFit();}));
+document.addEventListener("visibilitychange",()=>{if(!document.hidden){map.invalidateSize();initialFit();}});
+[200,600,1500].forEach(ms=>setTimeout(initialFit,ms));
+syncLabels();
 PLACES.forEach(refreshPick); $("#n").textContent=picked.size;
-$("#fCity").onclick=()=>{closeSheet();map.flyToBounds(cityB,{...pad(),duration:.6});};
-$("#fAll").onclick=()=>{closeSheet();map.flyToBounds(allB,{...pad(),duration:.6});};
+function safeFly(b,opt){map.invalidateSize();try{map.flyToBounds(b,{...pad(),duration:.6,...(opt||{})});}catch(e){try{map.fitBounds(b);}catch(_){}}}
+$("#fCity").onclick=()=>{closeSheet();safeFly(cityB);};
+$("#fAll").onclick=()=>{closeSheet();safeFly(allB);};
 $("#fHotel").onclick=()=>{openBase("hotel");};
 map.on("click",()=>closeSheet());
 
@@ -971,7 +985,7 @@ $("#chips").addEventListener("click",e=>{
   const pts=[];
   PLACES.forEach(p=>{const show=!filter||p.cat===filter;markers[p.key].getElement()?.querySelector(".mk").classList.toggle("dim",!show);if(show)pts.push(p.ll);});
   closeSheet();
-  if(filter) map.flyToBounds(L.latLngBounds(pts),{...pad(),maxZoom:15,duration:.6}); else map.flyToBounds(cityB,{...pad(),duration:.6});
+  if(filter) safeFly(L.latLngBounds(pts),{maxZoom:15}); else safeFly(cityB);
 });
 renderChips();
 $("#sub").textContent=`${PLACES.length} 個景點`;
@@ -1005,7 +1019,7 @@ function focusOn(ll,zoom){
   const sh=sheet.getBoundingClientRect().height||H*0.6;
   const topUI=110, visCenter=(topUI+(H-sh))/2 + 18;   // 標記是底部對齊，往下補一點
   const pt=map.project(ll,z).add([0,H/2-visCenter]);
-  map.flyTo(map.unproject(pt,z),z,{duration:.5});
+  try{map.flyTo(map.unproject(pt,z),z,{duration:.5});}catch(e){try{map.setView(ll,z);}catch(_){}}
 }
 
 function openPlace(p){
@@ -1158,7 +1172,7 @@ function openHelp(){
     <div class="kv">👆 <b>點地圖上的標記</b>：看介紹、滑動看照片<br>➕ <b>按「想去」</b>：勾選景點，地圖上會出現紅框<br>☰ <b>清單</b>：看全部或已選的景點<br>📋 <b>複製選擇</b>：把清單貼回群組</div>
     <p>上方的分類可以只顯示某一類景點；右邊的按鈕可以回到飯店、市區或看全部（含機場、凡爾賽、迪士尼）。放大地圖會顯示景點名稱。</p>
     <p>距離都是從飯店 Citadines La Défense 算的<b>直線距離</b>，實際路程會再長一些，按「🚇 路線」可以看大眾運輸怎麼搭。</p>
-    <small>照片來自 Wikipedia／Wikimedia Commons（點照片右下角可看作者與授權）。地圖 © OpenStreetMap、CARTO。營業時間與門票請以官網為準。</small></div>`,{modal:true});
+    <small>照片來自 Wikipedia／Wikimedia Commons（點照片右下角可看作者與授權）。地圖 © OpenStreetMap。營業時間與門票請以官網為準。</small></div>`,{modal:true});
 }
 $("#helpBtn").onclick=openHelp;
 setTimeout(()=>toast("👆 點地圖上的標記看介紹"),700);
